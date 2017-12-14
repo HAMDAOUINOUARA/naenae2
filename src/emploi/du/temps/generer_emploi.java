@@ -62,8 +62,9 @@ public class generer_emploi {
                                 requete_heurs ="Select * from heur where not exists (select 1 from seance where seance.heur_idheur = idheur AND enseignant_idenseignant ="+id_ens+" )";
                                 }
                             //chercher le temps libre du prof
-                            
-                             
+                            String requete_heur_libre_ens ="SELECT * FROM heur WHERE NOT EXISTS(SELECT 1 FROM seance WHERE idheur = heur_idheur AND enseignant_idenseignant = "+id_ens+")";
+                            Statement statement_heur_libre_ens = connection.createStatement();
+                            ResultSet resultat_heur_libre_ens = statement_heur_libre_ens.executeQuery(requete_heur_libre_ens);
                              
                              
                             String requete_salle_already = "SELECT * FROM salle WHERE `idsalle`=(SELECT salle_idsalle from seance WHERE classe_idclasse ="+résultats_get_classe.getString("idclasse")+" )";
@@ -135,9 +136,6 @@ public class generer_emploi {
                     }
             }
              }
-            String requete_get_seance = "SELECT * FROM seance";
-            Statement statement_get_seance = connection.createStatement();
-            ResultSet résultats_get_seance = statement_get_seance.executeQuery(requete_get_seance);
          } catch (SQLException ex) {
              Logger.getLogger(theMain.class.getName()).log(Level.SEVERE, null, ex);
          }
