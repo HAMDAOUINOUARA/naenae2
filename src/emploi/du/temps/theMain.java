@@ -792,6 +792,7 @@ public class theMain extends javax.swing.JFrame {
     private void generer_emploi_du_tempsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generer_emploi_du_tempsActionPerformed
         // TODO add your handling code here:
        generer_emploi.generer();
+       afficher_emploi.afficher();
     }//GEN-LAST:event_generer_emploi_du_tempsActionPerformed
 
     /**
